@@ -1,0 +1,27 @@
+pipeline{
+	agent: any
+	
+	stages{
+		stage ('Build Jar'){
+		
+		steps {
+		withMaven(maven : '3_5_0'){
+			sh 'mvn clean install'
+		
+		}
+		}
+		
+		}
+		
+		stage ('Run Jar'){
+		
+		steps {
+			sh 'java -jar target/spring-boot-0.0.1-SNAPSHOT.jar'
+		
+		}
+		
+		}
+		
+	}
+
+}
